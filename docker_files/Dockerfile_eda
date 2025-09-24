@@ -1,32 +1,52 @@
-# Dockerfile_eda
+# Base image: R + RStudio Server
+FROM rocker/rstudio:4.3.1
 
-# Base R image
-FROM rocker/r-ver:4.3.1
-
-# Install system dependencies
+# Install system dependencies for R packages
 RUN apt-get update && apt-get install -y \
     libcurl4-openssl-dev \
-    libxml2-dev \
     libssl-dev \
+    libxml2-dev \
     libgit2-dev \
+    libfontconfig1-dev \
+    libfreetype6-dev \
+    libpng-dev \
+    libtiff5-dev \
+    libjpeg-dev \
     git \
     && rm -rf /var/lib/apt/lists/*
 
 # Install CRAN packages
-# Install CRAN packages (single RUN command with proper quoting)
-RUN R -e "install.packages(c('tidyverse','ggplot2','plotly','cowplot','pheatmap','RColorBrewer','ComplexHeatmap','jsonlite','GEOquery','msigdbr'), repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages(c( \
+  'tidyverse', \
+  'jsonlite', \
+  'ggplot2', \
+  'pheatmap', \
+  'cowplot', \
+  'RColorBrewer' \
+), repos='https://cloud.r-project.org/')"
 
+# Install Bioconductor manager
+RUN R -e "install.packages('BiocManager', repos='https://cloud.r-project.org/')"
 
 # Install Bioconductor packages
-# Bioconductor packages
-RUN R -e "install.packages('BiocManager', repos='https://cloud.r-project.org/')"
-RUN R -e "BiocManager::install(c('fgsea','GSEABase','biomaRt'), ask=FALSE)"
+RUN R -e "BiocManager::install(c( \
+  'DESeq2', \
+  'edgeR', \
+  'limma', \
+  'tximport', \
+  'biomaRt', \
+  'GEOquery', \
+  'fgsea', \
+  'msigdbr', \
+  'GSEABase', \
+  'ComplexHeatmap' \
+), ask=FALSE, update=TRUE)"
 
-# Set working directory inside container
+# Set workdir for project
 WORKDIR /home/rstudio/project
 
-# Copy project files (optional if mounting host folder)
+# Copy code (optional, since you’ll usually mount with -v)
 COPY . /home/rstudio/project
 
-# Optional: expose port for RStudio Server (if using)
+# Expose RStudio port
 EXPOSE 8787

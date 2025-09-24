@@ -1,0 +1,6 @@
+# .dockerignore
+*.Rhistory
+*.RData
+*.Rproj.user
+data/*
+.DS_Store

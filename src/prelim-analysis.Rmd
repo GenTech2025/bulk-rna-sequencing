@@ -32,5 +32,27 @@ required_libraries <- c(
   "RColorBrewer",   # Color palettes
   "ComplexHeatmap"  # Advanced annotated heatmaps
 )
+
+# Load necessary libraries
+library(GEOquery)
+library(biomaRt)
+library(tximport)
+library(ggplot2)
+```
+
+
+```{r}
+bulk_one <- "GSE249385"
+bulk_two <- "GSE151387"
+sc_one <- "GSE249558"
+sc_two <- "GSE142089"
+
+gset <- getGEO(sc_two, GSEMatrix = TRUE, getGPL = FALSE)
+```
+
+
+```{r}
+sc_two_eset <- gset[[1]]
+sc_two_metadata <- pData(sc_two_eset) # Contains the metadata we are looking for to identify the EpCam cells
 ```
 
