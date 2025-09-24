@@ -1,0 +1,36 @@
+---
+title: "first-draft"
+author: "sourav-roy"
+date: "2025-09-24"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Libraries
+
+```{r}
+
+# List all the libraries thal will be required for building the 
+required_libraries <- c(
+  "tidyverse",      # Data wrangling and visualization
+  "DESeq2",         # Differential expression
+  "edgeR",          # Alternative DE method
+  "limma",          # Voom pipeline
+  "tximport",       # Import transcript-level quantification
+  "biomaRt",        # Gene annotation
+  "GEOquery",       # Download GEO datasets
+  "fgsea",          # Fast GSEA
+  "msigdbr",        # MSigDB gene sets
+  "GSEABase",       # Gene set manipulation
+  "jsonlite",       # JSON support
+  "ggplot2",        # Plotting
+  "pheatmap",       # Simple heatmaps
+  "cowplot",        # Plot composition
+  "RColorBrewer",   # Color palettes
+  "ComplexHeatmap"  # Advanced annotated heatmaps
+)
+```
+

@@ -1,0 +1,32 @@
+# Dockerfile_eda
+
+# Base R image
+FROM rocker/r-ver:4.3.1
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    libcurl4-openssl-dev \
+    libxml2-dev \
+    libssl-dev \
+    libgit2-dev \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install CRAN packages
+# Install CRAN packages (single RUN command with proper quoting)
+RUN R -e "install.packages(c('tidyverse','ggplot2','plotly','cowplot','pheatmap','RColorBrewer','ComplexHeatmap','jsonlite','GEOquery','msigdbr'), repos='https://cloud.r-project.org/')"
+
+
+# Install Bioconductor packages
+# Bioconductor packages
+RUN R -e "install.packages('BiocManager', repos='https://cloud.r-project.org/')"
+RUN R -e "BiocManager::install(c('fgsea','GSEABase','biomaRt'), ask=FALSE)"
+
+# Set working directory inside container
+WORKDIR /home/rstudio/project
+
+# Copy project files (optional if mounting host folder)
+COPY . /home/rstudio/project
+
+# Optional: expose port for RStudio Server (if using)
+EXPOSE 8787
