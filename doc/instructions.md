@@ -9,7 +9,19 @@ In total there were four transcriptomics dataset used in this study out of which
 - Single-Cell RNA Sequencing of hepatoblasts, cholangiocytes(embryonic BECs) and hepatocytes. **GEO: GSE142089, ENA: PRJNA595892**. (previously published, only BECs were used in the present study)
 
 
-NCBI Link: https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1048936
-ENA Link: https://www.ebi.ac.uk/ena/browser/view/PRJNA1048936
-GEO Link: 
-### Experimental Design
+## Practical Implementation
+
+### Download raw FASTQ files from ENA/SRA
+Downloaded from ENA using shell script provided by the ENA webpage.
+The reads are paired end reads.
+
+### Quality control using FASTQC
+
+FastQC v0.12.1 used for quality control.
+
+```bash
+fastqc *_1.fastq.gz *_2.fastq.gz -o fastqc_output -t 6
+```
+
+Interpretation Guide: https://rtsf.natsci.msu.edu/genomics/technical-documents/fastqc-tutorial-and-faq.aspx
+
