@@ -15,12 +15,16 @@ In total there were four transcriptomics dataset used in this study out of which
 Downloaded from ENA using shell script provided by the ENA webpage.
 The reads are paired end reads.
 
-### Quality control using FASTQC
+### Quality control using FASTQC and MultiQC
 
-FastQC v0.12.1 used for quality control.
+FastQC v0.12.1 and MultiQC v1.18 used for quality control.
 
 ```bash
+# run qc on each sample using fastqc
 fastqc *_1.fastq.gz *_2.fastq.gz -o fastqc_output -t 6
+
+# use multiqc to collate all resources
+multiqc ../data/fastqc_output/*.zip
 ```
 
 Interpretation Guide: https://rtsf.natsci.msu.edu/genomics/technical-documents/fastqc-tutorial-and-faq.aspx

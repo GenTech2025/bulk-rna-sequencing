@@ -1,0 +1,13 @@
+Module	Section	Sample Name	Source
+FastQC	all_sections	SRR27104543_1	/mnt/d/portfolio_projects_2025/bulk-rna-sequencing/data/fastqc_output/SRR27104543_1_fastqc.zip
+FastQC	all_sections	SRR27104543_2	/mnt/d/portfolio_projects_2025/bulk-rna-sequencing/data/fastqc_output/SRR27104543_2_fastqc.zip
+FastQC	all_sections	SRR27104544_1	/mnt/d/portfolio_projects_2025/bulk-rna-sequencing/data/fastqc_output/SRR27104544_1_fastqc.zip
+FastQC	all_sections	SRR27104544_2	/mnt/d/portfolio_projects_2025/bulk-rna-sequencing/data/fastqc_output/SRR27104544_2_fastqc.zip
+FastQC	all_sections	SRR27104545_1	/mnt/d/portfolio_projects_2025/bulk-rna-sequencing/data/fastqc_output/SRR27104545_1_fastqc.zip
+FastQC	all_sections	SRR27104545_2	/mnt/d/portfolio_projects_2025/bulk-rna-sequencing/data/fastqc_output/SRR27104545_2_fastqc.zip
+FastQC	all_sections	SRR27104546_1	/mnt/d/portfolio_projects_2025/bulk-rna-sequencing/data/fastqc_output/SRR27104546_1_fastqc.zip
+FastQC	all_sections	SRR27104546_2	/mnt/d/portfolio_projects_2025/bulk-rna-sequencing/data/fastqc_output/SRR27104546_2_fastqc.zip
+FastQC	all_sections	SRR27104547_1	/mnt/d/portfolio_projects_2025/bulk-rna-sequencing/data/fastqc_output/SRR27104547_1_fastqc.zip
+FastQC	all_sections	SRR27104547_2	/mnt/d/portfolio_projects_2025/bulk-rna-sequencing/data/fastqc_output/SRR27104547_2_fastqc.zip
+FastQC	all_sections	SRR27104548_1	/mnt/d/portfolio_projects_2025/bulk-rna-sequencing/data/fastqc_output/SRR27104548_1_fastqc.zip
+FastQC	all_sections	SRR27104548_2	/mnt/d/portfolio_projects_2025/bulk-rna-sequencing/data/fastqc_output/SRR27104548_2_fastqc.zip
