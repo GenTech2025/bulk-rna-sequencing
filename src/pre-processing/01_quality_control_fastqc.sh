@@ -4,4 +4,6 @@ fastqc ../data/*_1.fastq.gz ../data/*_2.fastq.gz \
        -t 6
 
 # run multiqc
-multiqc ../data/fastqc_output/*.zip
+multiqc ../data/fastqc_output/*.zip \
+       -n "raw_fastq_files_QC" \
+       -o ../results/multiqc_results

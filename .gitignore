@@ -2,6 +2,9 @@
 .Rhistory
 .RData
 .Ruserdata
-.fastq.gz
-.fastq
+*.fastq.gz
+*.fastq
 ./creds.md
+*.fa
+*.gtf
+./data/fastqc_output

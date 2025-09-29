@@ -7,4 +7,3 @@ docker run -d \
   -e PASSWORD=root \
   --name test-eda \
   docker_eda
-
