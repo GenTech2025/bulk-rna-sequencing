@@ -12,9 +12,10 @@ gunzip *.gz
 mkdir ../data/preprocessing-data/reference
 
 # Create the genome index using STAR
-STAR --runThreadN 8 \
+STAR --runThreadN 4 \
      --runMode genomeGenerate \
      --genomeDir ../data/preprocessing-data/reference \
      --genomeFastaFiles ../data/preprocessing-data/Mus_musculus.GRCm39.dna_sm.primary_assembly.fa \
      --sjdbGTFfile ../data/preprocessing-data/Mus_musculus.GRCm39.115.gtf \
      
+# The making of genome index is taking too long
