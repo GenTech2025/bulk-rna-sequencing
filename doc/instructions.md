@@ -27,5 +27,28 @@ fastqc *_1.fastq.gz *_2.fastq.gz -o fastqc_output -t 6
 multiqc ../data/fastqc_output/*.zip
 ```
 
-Interpretation Guide: https://rtsf.natsci.msu.edu/genomics/technical-documents/fastqc-tutorial-and-faq.aspx
+FASTQC Interpretation Guide: https://rtsf.natsci.msu.edu/genomics/technical-documents/fastqc-tutorial-and-faq.aspx
 
+## Create genome index using STAR
+
+```bash
+# Download the musmusculus fasta and gtf file from ensembl
+wget https://ftp.ensembl.org/pub/release-115/fasta/mus_musculus/dna/Mus_musculus.GRCm39.dna_sm.primary_assembly.fa.gz ../data/preprocessing-data
+
+wget https://ftp.ensembl.org/pub/release-115/gtf/mus_musculus/Mus_musculus.GRCm39.115.gtf.gz ../data/preprocessing-data
+
+# Unzip the .gz files
+gunzip *.gz
+
+# Create the genome index directory
+mkdir ../data/preprocessing-data/reference
+
+# Create the genome index using STAR
+STAR --runThreadN 4 \
+     --runMode genomeGenerate \
+     --genomeDir ../data/preprocessing-data/reference \
+     --genomeFastaFiles ../data/preprocessing-data/Mus_musculus.GRCm39.dna_sm.primary_assembly.fa \
+     --sjdbGTFfile ../data/preprocessing-data/Mus_musculus.GRCm39.115.gtf \
+```
+
+STAR manual: https://physiology.med.cornell.edu/faculty/skrabanek/lab/angsd/lecture_notes/STARmanual.pdf#page=4.41
