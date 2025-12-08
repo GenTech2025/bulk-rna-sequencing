@@ -1,0 +1,66 @@
+
+docker build -t docker_eda -f docker_files/Dockerfile_eda (builds the docker image)
+
+docker run -d \
+  -p 8787:8787 \
+  -v /mnt/d/portfolio_projects_2025/bulk-rna-sequencing:/home/rstudio/project \
+  -e PASSWORD=root \
+  --name test-eda \
+  docker_eda
+
+## Setting up R-Studio using Docker
+
+```docker
+# Base image: R + RStudio Server
+FROM rocker/rstudio:4.3.1
+
+# Install system dependencies for R packages
+RUN apt-get update && apt-get install -y \
+    libcurl4-openssl-dev \
+    libssl-dev \
+    libxml2-dev \
+    libgit2-dev \
+    libfontconfig1-dev \
+    libfreetype6-dev \
+    libpng-dev \
+    libtiff5-dev \
+    libjpeg-dev \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install CRAN packages
+RUN R -e "install.packages(c( \
+  'tidyverse', \
+  'jsonlite', \
+  'ggplot2', \
+  'pheatmap', \
+  'cowplot', \
+  'RColorBrewer' \
+), repos='https://cloud.r-project.org/')"
+
+# Install Bioconductor manager
+RUN R -e "install.packages('BiocManager', repos='https://cloud.r-project.org/')"
+
+# Install Bioconductor packages
+RUN R -e "BiocManager::install(c( \
+  'DESeq2', \
+  'edgeR', \
+  'limma', \
+  'tximport', \
+  'biomaRt', \
+  'GEOquery', \
+  'fgsea', \
+  'msigdbr', \
+  'GSEABase', \
+  'ComplexHeatmap' \
+), ask=FALSE, update=TRUE)"
+
+# Set workdir for project
+WORKDIR /home/rstudio/project
+
+# Copy code (optional, since you’ll usually mount with -v)
+COPY . /home/rstudio/project
+
+# Expose RStudio port
+EXPOSE 8787
+```
