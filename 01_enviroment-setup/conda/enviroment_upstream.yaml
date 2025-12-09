@@ -1,0 +1,34 @@
+name: rnaseq_upstream
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  # --- Core Python (Scripting & Data Management) ---
+  - python=3.12
+  - pandas
+  - numpy
+  - scipy
+  - jupyterlab                  
+
+  # --- Data Retrieval (ENA/SRA API interaction) ---
+  - requests                    # Standard HTTP library
+  - httpx                       # Async HTTP client
+  - urllib3
+  - pyyaml                      # Parsing YAML configs
+  - xmltodict                   # Parsing XML metadata from ENA/NCBI
+  - beautifulsoup4              # Scraping HTML metadata if needed
+  - defusedxml                  # Secure XML parsing
+
+  # --- Quality Control & Trimming ---
+  - fastqc                      # Raw read quality checks
+  - multiqc                     # Aggregating QC reports
+  - trimmomatic                 # Adapter and quality trimming
+
+  # --- Alignment & Quantification ---
+  - hisat2                      # Spliced aligner (RNA-seq specific)
+  - samtools                    # BAM/SAM manipulation
+  - subread                     # Contains 'featureCounts' for quantification
+
+  # --- Package Manager ---
+  - pip

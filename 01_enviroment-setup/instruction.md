@@ -1,15 +1,16 @@
-# Download and Install Miniconda
+### Download and Install Miniconda
 ```bash
+# Download miniconda installer to your home directory
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh
+
+# Install miniconda and verify
 bash ~/miniconda.sh
 source ~/.bashrc
 conda --version
 ```
-# Install STAR, Trimmomatic, Samtools, FeatureCounts
 
+### Create Conda enviroments using YAML files
 ```bash
-# Create a new conda enviroment for our project
-conda create -n bulk_rna_seq
-# We can install STAR using conda
-conda install -c bioconda star
+# Create conda envrioment for upstream RNA seq analysis
+conda create env --file=./conda/enviroment_upstream.yaml
 ```

@@ -1,0 +1,46 @@
+name: rnaseq_downstream
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  # --- Core Python (For API calls & Metadata) ---
+  - python=3.12
+  - pandas
+  - numpy
+  - scipy
+  - matplotlib
+  - requests
+  - httpx
+  - urllib3
+  - pyyaml
+  - xmltodict
+  - beautifulsoup4
+  - defusedxml
+
+  # --- R Base & Utilities ---
+  - r-base=4.3
+  - r-tidyverse                 # Data manipulation & plotting
+  - r-msigdbr                   # MSigDB gene sets (CRAN)
+  
+  # --- Bioconductor: Differential Expression ---
+  - bioconductor-deseq2
+  - bioconductor-edger
+  - bioconductor-limma
+  - bioconductor-apeglm         # LFC shrinkage
+  
+  # --- Bioconductor: Data Import & Annotation ---
+  - bioconductor-tximport       # For importing Salmon/Kallisto counts
+  - bioconductor-biomart        # For gene annotation
+  - bioconductor-geoquery       # For downloading GEO datasets
+  - bioconductor-org.hs.eg.db   # Human genome annotation
+  
+  # --- Bioconductor: Enrichment & Visualization ---
+  - bioconductor-clusterprofiler
+  - bioconductor-fgsea          # Fast Gene Set Enrichment Analysis
+  - bioconductor-gseabase       # Gene Set structures
+  - bioconductor-complexheatmap # Advanced heatmaps
+  - r-pheatmap                  # Basic heatmaps (kept as backup)
+
+  # --- Pip ---
+  - pip
