@@ -3,32 +3,39 @@ channels:
   - conda-forge
   - bioconda
   - defaults
+
 dependencies:
-  # --- Core Python (Scripting & Data Management) ---
+  # --- Core Python ---
   - python=3.12
   - pandas
   - numpy
   - scipy
-  - jupyterlab                  
+  - jupyterlab
 
-  # --- Data Retrieval (ENA/SRA API interaction) ---
-  - requests                    # Standard HTTP library
-  - httpx                       # Async HTTP client
-  - urllib3
-  - pyyaml                      # Parsing YAML configs
-  - xmltodict                   # Parsing XML metadata from ENA/NCBI
-  - beautifulsoup4              # Scraping HTML metadata if needed
-  - defusedxml                  # Secure XML parsing
+  # --- Metadata & API fetching ---
+  - requests
+  - httpx
+  - pyyaml
+  - xmltodict
+  - beautifulsoup4
 
-  # --- Quality Control & Trimming ---
-  - fastqc                      # Raw read quality checks
-  - multiqc                     # Aggregating QC reports
-  - trimmomatic                 # Adapter and quality trimming
+  # --- QC Tools ---
+  - fastqc
+  - multiqc
+  - trimmomatic
 
   # --- Alignment & Quantification ---
-  - hisat2                      # Spliced aligner (RNA-seq specific)
-  - samtools                    # BAM/SAM manipulation
-  - subread                     # Contains 'featureCounts' for quantification
+  - hisat2
+  - samtools
+  - subread        # includes featureCounts
 
-  # --- Package Manager ---
+  # --- Downloaders / Accession Tools ---
+  - sra-tools
+  - enabrowsertools
+  - aspera-cli
+
+  # --- Miscallenous ---
+  - pigz             # parallel gzip for fast decompression
+  - seqkit           # fast FASTA/FASTQ manipulation
+  - parallel         # for batch processing
   - pip
