@@ -8,3 +8,6 @@
 *.fa
 *.gtf
 ./data/fastqc_output
+*.bam.bai
+*.bam
+*.sam

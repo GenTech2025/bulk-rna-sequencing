@@ -9,7 +9,7 @@ Using DESeq2 analysis, researchers identified 184 differentially expressed genes
 [Link to the Study](https://pubmed.ncbi.nlm.nih.gov/32084158/)
 
 
-#### Dataset use in this project: PRJNA603669
+#### Dataset used in this project: PRJNA603669
 - Total of 27 human patient samples, out of which 13 patients had type 2 diabetes and 14 patients were healthy individuals.
 - Read Length: 50bp
 - Dataset Size: 11GB

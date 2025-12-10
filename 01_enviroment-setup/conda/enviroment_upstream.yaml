@@ -23,6 +23,7 @@ dependencies:
   - fastqc
   - multiqc
   - trimmomatic
+  - fastp
 
   # --- Alignment & Quantification ---
   - hisat2
