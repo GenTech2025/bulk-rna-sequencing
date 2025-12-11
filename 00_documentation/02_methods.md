@@ -26,8 +26,26 @@ In this stage we will download and preprocess the raw FASTQ files and the output
 > During the first trial of alignment, the hisat2 command was launched from VS Code which after a while seemed to stop responding and hence had to be force quit, in the second trial the hisat2 command was directly launched from the bash terminal and RAM usage was monitored using *htop* in another terminal window. The maximum RAM used during aligning the different samples didnt exceed 10GB
 
 - Check the quality of alignment using *samtools* and aggregate the results using *MultiQC*.
-> The quality of the alignments was visualized in the multiqc.html report and some serious issues could be observed right away in the general statistics section
+> The quality of the alignments was visualized in the multiqc.html report and some serious issues could be observed right away in the general statistics section, some of the samples have extremely low mapping percentage ranging from 1.7 - 40%, this needs to be investigated (maybe source of library preparation is the issue as it is FFPE RNA?)
 - Quantify the aligned reads using *featurecounts* from the *subread* package.
+> As the reference genome used in this analysis was pre-built we need to first find out which exact version of the genome.fasta and annotation.gtf files were used in creating the indexed genome.
+
+```bash
+#!/bin/bash
+
+# check a bam file to see what chromosome notation is being used
+samtools view -H SRR10983637.trim.sorted.bam | less
+
+# OUTPUT
+
+# @HD     VN:1.0  SO:coordinate
+# @SQ     SN:1    LN:248956422
+# @SQ     SN:10   LN:133797422
+
+```
+> Result: Ensembl/GENCODE-style GRCh38 use the numerical (1,2, .., 22) naming convention for chromosomes. Now we can proceed with downloading the GRCh38 genome and annotation file from ensembl.
+
+
 
 ### b) Downstream Analysis
 *To be Completed*
