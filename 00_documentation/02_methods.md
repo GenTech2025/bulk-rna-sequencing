@@ -43,7 +43,10 @@ samtools view -H SRR10983637.trim.sorted.bam | less
 # @SQ     SN:10   LN:133797422
 
 ```
-> Result: Ensembl/GENCODE-style GRCh38 use the numerical (1,2, .., 22) naming convention for chromosomes. Now we can proceed with downloading the GRCh38 genome and annotation file from ensembl.
+> Result: Ensembl/GENCODE-style GRCh38 use the numerical (1,2, .., 22) naming convention for chromosomes. Now we can proceed with downloading the GRCh38 genome and annotation file from ensembl. Now download the *genome.fasta* and *annotation.gtf* using the following from [Ensembl](https://www.ensembl.org/Homo_sapiens/Info/Index).
+
+- Genome FASTA file: [file](https://ftp.ensembl.org/pub/release-115/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz)
+- Annotation GTF file: [file](https://ftp.ensembl.org/pub/release-115/gtf/homo_sapiens/Homo_sapiens.GRCh38.115.gtf.gz)
 
 
 
