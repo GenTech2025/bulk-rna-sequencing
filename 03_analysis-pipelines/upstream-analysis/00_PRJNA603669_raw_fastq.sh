@@ -5,10 +5,10 @@ wget -P ../../02_data ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR109/037/SRR10983637/
 wget -P ../../02_data ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR109/052/SRR10983652/SRR10983652.fastq.gz
 wget -P ../../02_data ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR109/041/SRR10983641/SRR10983641.fastq.gz
 wget -P ../../02_data ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR109/049/SRR10983649/SRR10983649.fastq.gz
-wget -P ../../02_data ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR109/063/SRR10983663/SRR10983663.fastq.gz # <--- FAILED (No such directory)
-wget -P ../../02_data ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR109/059/SRR10983659/SRR10983659.fastq.gz # <--- FAILED (No such directory)
-wget -P ../../02_data ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR109/048/SRR10983648/SRR10983648.fastq.gz # <--- FAILED (No such directory)
-wget -P ../../02_data ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR109/053/SRR10983653/SRR10983653.fastq.gz # <--- FAILED (No such directory)
+wget -P ../../02_data ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR109/063/SRR10983663/SRR10983663.fastq.gz 
+wget -P ../../02_data ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR109/059/SRR10983659/SRR10983659.fastq.gz 
+wget -P ../../02_data ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR109/048/SRR10983648/SRR10983648.fastq.gz 
+wget -P ../../02_data ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR109/053/SRR10983653/SRR10983653.fastq.gz 
 wget -P ../../02_data ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR109/047/SRR10983647/SRR10983647.fastq.gz
 wget -P ../../02_data ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR109/042/SRR10983642/SRR10983642.fastq.gz
 wget -P ../../02_data ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR109/062/SRR10983662/SRR10983662.fastq.gz
@@ -25,6 +25,3 @@ wget -P ../../02_data ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR109/055/SRR10983655/
 wget -P ../../02_data ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR109/044/SRR10983644/SRR10983644.fastq.gz
 wget -P ../../02_data ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR109/061/SRR10983661/SRR10983661.fastq.gz
 wget -P ../../02_data ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR109/039/SRR10983639/SRR10983639.fastq.gz
-
-# 4 files out of 27 failed to download
-# 

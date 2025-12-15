@@ -1,6 +1,7 @@
+#!/bin/bash
+
 # create the output directory
 mkdir -p ../../04_results/fastqc_output ../../04_results/multiqc_results
-
 
 # run fastqc on all single-end fastq samples using 6 threads
 fastqc ../../02_data/*.fastq.gz \

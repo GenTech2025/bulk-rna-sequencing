@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Create directory for the genome index
 mkdir -p ../../02_data/genome-index
 
