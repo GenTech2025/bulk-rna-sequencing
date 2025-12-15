@@ -1,0 +1,11 @@
+# Ignore results & reports (FastQC/MultiQC outputs often include lots of HTML/JS/CSS)
+04_results/** linguist-generated=true
+
+# Ignore raw/intermediate data (not source code)
+02_data/** linguist-generated=true
+
+# Ignore Python virtual environment (not source code)
+bulk-rna-seq.venv/** linguist-vendored=true
+
+# (Optional) If you keep rendered HTML reports elsewhere too:
+**/*.html linguist-generated=true
