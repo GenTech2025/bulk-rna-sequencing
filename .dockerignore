@@ -2,5 +2,5 @@
 *.Rhistory
 *.RData
 *.Rproj.user
-data/*
+02_data/*
 .DS_Store

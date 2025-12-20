@@ -48,6 +48,7 @@ samtools view -H SRR10983637.trim.sorted.bam | less
 - Genome FASTA file: [file](https://ftp.ensembl.org/pub/release-115/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz)
 - Annotation GTF file: [file](https://ftp.ensembl.org/pub/release-115/gtf/homo_sapiens/Homo_sapiens.GRCh38.115.gtf.gz)
 
+> The genome fasta and annotation files were downloaded successfully and was used for quantification of the mapped reads using **featureCounts** , however upon inspecting the summary of featureCounts output as exprected some of the samples showed very poor quantification performance (most likely the ones with very low read alignment percentage). The next step will be to extract the table of **General Statistics** from the MultiQC report and identify the samples with less than 40% mapping percentage and drop them from the final gene expression matrix.
 
 
 ### b) Downstream Analysis
