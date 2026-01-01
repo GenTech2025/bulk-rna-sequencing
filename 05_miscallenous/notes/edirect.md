@@ -14,4 +14,5 @@ cat "list_of_accessions.txt" | \
 efetch -db biosample -format docsum | \
 xtract -pattern DocumentSummary -element Accession Title Organism
 
+# Project will continue on January 2026
 ```
