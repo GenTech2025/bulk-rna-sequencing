@@ -1,8 +1,8 @@
 # Docker Setup — Downstream RNA-seq Analysis
 
-RStudio Server container built from the conda environment defined in
-`01_enviroment-setup/conda/enviroment_downstream.yaml`. All output written
-inside `/home/rstudio/project/04_results/` is persisted to the host.
+RStudio Server container with R 4.3.1 and all required Bioconductor packages
+for differential expression analysis (DESeq2, edgeR, limma, etc.). All output
+written inside `/home/rstudio/project/04_results/` is persisted to the host.
 
 ---
 
@@ -15,13 +15,13 @@ docker build -t docker_eda -f 01_enviroment-setup/docker/Dockerfile_eda .
 **Run**
 
 ```bash
-docker run -d \
-  --rm \
-  -p 8787:8787 \
-  -v /home/roy/Desktop/test-projects/bulk-rna-sequencing:/home/rstudio/project \
-  -e PASSWORD=root \
-  --name eda-container \
-  docker_eda
+sudo docker run -d \
+      --rm \
+      -p 8787:8787 \
+      -v /home/roy/Desktop/test-projects/bulk-rna-sequencing:/home/rstudio/project \
+      -e PASSWORD=root \
+      --name eda-container \
+      docker_eda
 ```
 
 `--rm` removes the container automatically when stopped.
