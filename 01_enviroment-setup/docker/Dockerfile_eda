@@ -1,52 +1,25 @@
-# Base image: R + RStudio Server
 FROM rocker/rstudio:4.3.1
 
-# Install system dependencies for R packages
-RUN apt-get update && apt-get install -y \
-    libcurl4-openssl-dev \
-    libssl-dev \
-    libxml2-dev \
-    libgit2-dev \
-    libfontconfig1-dev \
-    libfreetype6-dev \
-    libpng-dev \
-    libtiff5-dev \
-    libjpeg-dev \
-    git \
-    && rm -rf /var/lib/apt/lists/*
+# Install wget for Miniconda download
+RUN apt-get update && apt-get install -y wget && rm -rf /var/lib/apt/lists/*
 
-# Install CRAN packages
-RUN R -e "install.packages(c( \
-  'tidyverse', \
-  'jsonlite', \
-  'ggplot2', \
-  'pheatmap', \
-  'cowplot', \
-  'RColorBrewer' \
-), repos='https://cloud.r-project.org/')"
+# Install Miniconda
+RUN wget -q https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh && \
+    bash /tmp/miniconda.sh -b -p /opt/conda && \
+    rm /tmp/miniconda.sh
 
-# Install Bioconductor manager
-RUN R -e "install.packages('BiocManager', repos='https://cloud.r-project.org/')"
+ENV PATH="/opt/conda/bin:$PATH"
 
-# Install Bioconductor packages
-RUN R -e "BiocManager::install(c( \
-  'DESeq2', \
-  'edgeR', \
-  'limma', \
-  'tximport', \
-  'biomaRt', \
-  'GEOquery', \
-  'fgsea', \
-  'msigdbr', \
-  'GSEABase', \
-  'ComplexHeatmap' \
-), ask=FALSE, update=TRUE)"
+# Install mamba for faster dependency solving
+RUN conda install -n base -c conda-forge mamba -y && conda clean --all -f -y
 
-# Set workdir for project
+# Copy and create the conda environment
+COPY 01_enviroment-setup/conda/enviroment_downstream.yaml /tmp/environment.yaml
+RUN mamba env create -f /tmp/environment.yaml && conda clean --all -f -y
+
+# Point RStudio Server at the conda environment's R
+RUN echo "rsession-which-r=/opt/conda/envs/rnaseq_downstream/bin/R" >> /etc/rstudio/rserver.conf
+
 WORKDIR /home/rstudio/project
 
-# Copy code (optional, since you’ll usually mount with -v)
-COPY . /home/rstudio/project
-
-# Expose RStudio port
 EXPOSE 8787

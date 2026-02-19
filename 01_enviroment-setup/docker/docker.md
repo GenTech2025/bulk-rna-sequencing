@@ -1,66 +1,47 @@
+# Docker Setup — Downstream RNA-seq Analysis
 
-docker build -t docker_eda -f docker_files/Dockerfile_eda (builds the docker image)
+RStudio Server container built from the conda environment defined in
+`01_enviroment-setup/conda/enviroment_downstream.yaml`. All output written
+inside `/home/rstudio/project/04_results/` is persisted to the host.
 
+---
+
+**Build** (run from project root)
+
+```bash
+docker build -t docker_eda -f 01_enviroment-setup/docker/Dockerfile_eda .
+```
+
+**Run**
+
+```bash
 docker run -d \
+  --rm \
   -p 8787:8787 \
-  -v /mnt/d/portfolio_projects_2025/bulk-rna-sequencing:/home/rstudio/project \
+  -v /home/roy/Desktop/test-projects/bulk-rna-sequencing:/home/rstudio/project \
   -e PASSWORD=root \
-  --name test-eda \
+  --name eda-container \
   docker_eda
+```
 
-## Setting up R-Studio using Docker
+`--rm` removes the container automatically when stopped.
+Open RStudio at `http://localhost:8787` — user: `rstudio`, password: `root`.
 
-```docker
-# Base image: R + RStudio Server
-FROM rocker/rstudio:4.3.1
+**Stop** (also removes the container)
 
-# Install system dependencies for R packages
-RUN apt-get update && apt-get install -y \
-    libcurl4-openssl-dev \
-    libssl-dev \
-    libxml2-dev \
-    libgit2-dev \
-    libfontconfig1-dev \
-    libfreetype6-dev \
-    libpng-dev \
-    libtiff5-dev \
-    libjpeg-dev \
-    git \
-    && rm -rf /var/lib/apt/lists/*
+```bash
+docker stop eda-container
+```
 
-# Install CRAN packages
-RUN R -e "install.packages(c( \
-  'tidyverse', \
-  'jsonlite', \
-  'ggplot2', \
-  'pheatmap', \
-  'cowplot', \
-  'RColorBrewer' \
-), repos='https://cloud.r-project.org/')"
+---
 
-# Install Bioconductor manager
-RUN R -e "install.packages('BiocManager', repos='https://cloud.r-project.org/')"
+**Writing output to host from within RStudio**
 
-# Install Bioconductor packages
-RUN R -e "BiocManager::install(c( \
-  'DESeq2', \
-  'edgeR', \
-  'limma', \
-  'tximport', \
-  'biomaRt', \
-  'GEOquery', \
-  'fgsea', \
-  'msigdbr', \
-  'GSEABase', \
-  'ComplexHeatmap' \
-), ask=FALSE, update=TRUE)"
+The host `04_results/` directory is available inside the container at
+`/home/rstudio/project/04_results/`. Any files written there are saved
+directly to your host machine.
 
-# Set workdir for project
-WORKDIR /home/rstudio/project
-
-# Copy code (optional, since you’ll usually mount with -v)
-COPY . /home/rstudio/project
-
-# Expose RStudio port
-EXPOSE 8787
+```r
+write.csv(results, "/home/rstudio/project/04_results/deseq2_results.csv")
+ggsave("/home/rstudio/project/04_results/volcano_plot.png")
 ```
