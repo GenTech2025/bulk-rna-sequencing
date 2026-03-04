@@ -9,3 +9,5 @@ bulk-rna-seq.venv/** linguist-vendored=true
 
 # (Optional) If you keep rendered HTML reports elsewhere too:
 **/*.html linguist-generated=true
+
+static/* linguist-vendored
